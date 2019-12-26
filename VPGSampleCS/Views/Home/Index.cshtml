@@ -1,0 +1,99 @@
+﻿@model VPGSampleCS.Models.PaymentRequest
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    body {
+        direction: rtl;
+    }
+</style>
+
+<script src="@Url.Content("~/Scripts/jquery.min.js")" type="text/javascript"> </script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+
+<div class="jumbotron">
+    <h1>تست پذیرنده درگاه پرداخت اینترنتی</h1>
+</div>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger" style="direction: ltr">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @ViewBag.Message
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(t => t.MerchantId)
+        </div>
+        <div class="col-md-8">
+            @Html.TextBoxFor(t => t.MerchantId)
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(t => t.TerminalId)
+        </div>
+        <div class="col-md-8">
+            @Html.TextBoxFor(t => t.TerminalId)
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(t => t.MerchantKey)
+        </div>
+        <div class="col-md-8">
+            @Html.TextBoxFor(t => t.MerchantKey)
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(t => t.Amount)
+        </div>
+        <div class="col-md-8">
+            @Html.TextBoxFor(t => t.Amount)
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(t => t.PurchasePage)
+        </div>
+        <div class="col-md-8">
+            @Html.TextBoxFor(t => t.PurchasePage)
+        </div>
+    </div>
+
+    @*@Html.LabelFor(t => t.EnableMultiplexing)
+        @Html.CheckBoxFor(t => t.EnableMultiplexing)
+
+        <div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.LabelFor(t => t.MultiplexingData.Type)
+                    @Html.DropDownListFor(t => t.MultiplexingData.Type, new SelectListItem[] { new SelectListItem { Text = "درصد", Value = "Percentage" }, new SelectListItem { Text = "مبلغ", Value = "Amount" } })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    @Html.Grid(Model.MultiplexingData.MultiplexingRows).Columns(columns =>
+                       {
+                           columns.Add(foo => foo.IbanNumber).Titled("ردیف حساب");
+                           columns.Add(foo => foo.Value).Titled("مقدار");
+                       }).
+                </div>
+            </div>
+        </div>*@
+    <div class="row" style="text-align:center;">
+        <input type="submit" value="ارسال" class="btn btn-primary" style="margin:0 auto;width:100px;" />
+    </div>
+}
